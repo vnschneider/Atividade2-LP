@@ -9,8 +9,8 @@
 	    int tabelaCandi(int candidato), candidato, nvoto;
 		float calcularTotalvv(float vA, float vB, float vC, float vD, float vN, float vBr);
 		float calcularpercvcandi(float totalv, float ntotalv), vA, vB, vC, vD;
-		float calcularpercVNB (float totalvNB, float ntotalvbn), vN, vBr;
-		float calcularmaiorqv(float vA, float vB, float vC, float vD);
+		double calcularpercVNB (double totalvNB, double ntotalvbn), vN, vBr;
+		char calcularmaiorqv(float vA, float vB, float vC, float vD);
 		
 //Comando para habilitar acentuação
 		setlocale(LC_ALL, "Portuguese");
@@ -73,11 +73,11 @@
 	   
 //Contagem dos votos totais, brancos e nulos   
 	    float ntotalv = vA + vB + vC + vD;
-	    float ntotalvbn = vA + vB + vC + vD + vBr + vN;
-	    float totalvNB = vBr + vN;
+	    double ntotalvbn = vA + vB + vC + vD + vBr + vN;
+	    double totalvNB = vBr + vN;
 	    
 //Chamada da função para calcular o percentual de votos brancos e nulos
-	    float totalvbn = calcularpercVNB(totalvNB, ntotalvbn);printf("Foram obtidos: %.0f",totalvbn);printf("%% de votos brancos e nulos\n");
+	    double totalvbn = calcularpercVNB(totalvNB, ntotalvbn);printf("Foram obtidos: %.0f",totalvbn);printf("%% de votos brancos e nulos\n");
 	    
 //Chamada da função para calcular a porcentagem de votos de todos os candidatos
 	    float totalvA = calcularpercvcandi(vA, ntotalv);printf("\nO(a) candidato(a) A obteve: %.0f",totalvA);printf("%% dos votos!");
@@ -122,21 +122,22 @@
 	return totalv;
 	}
 	
-	float calcularpercVNB (float totalvNB, float ntotalvbn){
-		float nvtotalbn = 100 * (totalvNB / ntotalvbn);
+	double calcularpercVNB (double totalvNB, double ntotalvbn){
+		double nvtotalbn = 100 * (totalvNB / ntotalvbn);
 	return ntotalvbn;
 	}
 	
-	float calcularmaiorqv(float vA, float vB, float vC, float vD){
+	char calcularmaiorqv(float vA, float vB, float vC, float vD){
+		char candiV;
 		if (vA > vB && vA > vC && vA > vD){
-			char candiV = 'A';
+			candiV = 'A';
 		}else if (vB > vA && vB > vC && vB > vD){
-			char candiV = 'B';
+			 candiV = 'B';
 		}else if (vC > vA && vC > vB && vC > vD){
-			char candiV = 'C';
+			candiV = 'C';
 		}else if (vD > vA && vD > vC && vD > vB){
-			char candiV = 'D';
+			 candiV = 'D';
     	}
-    char candiV;
+    return candiV;
 	}
 	
